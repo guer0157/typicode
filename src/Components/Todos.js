@@ -17,7 +17,7 @@ export default function Todos() {
     const fetchData = async () => {
       console.log("PARMA", userId);
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${1}`
+        `https://jsonplaceholder.typicode.com/todos/${userId}`
       );
       const userTodo = await response.json();
       setTodos(userTodo);
