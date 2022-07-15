@@ -3,11 +3,28 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 const Completed = (status) => {
-  const statusColor = status ? "green" : "red";
+  const [complete, setComplete] = useState(status);
+  const statusColor = complete ? "green" : "red";
   return (
-    <span style={{ height: "3rem", width: "3rem", color: statusColor }}>
-      {status ? "Yes" : "No"}
-    </span>
+    <div>
+      <span
+        style={{
+          height: "3rem",
+          minWidth: "6rem",
+          color: statusColor,
+          margin: "0 1rem",
+        }}
+      >
+        {complete ? "Yes" : "No"}
+      </span>
+      <button
+        onClick={() => {
+          setComplete(!complete);
+        }}
+      >
+        Toggle Todo
+      </button>
+    </div>
   );
 };
 export default function Todos() {
@@ -15,7 +32,6 @@ export default function Todos() {
   const { userId } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      console.log("PARMA", userId);
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/todos/${userId}`
       );
@@ -26,15 +42,19 @@ export default function Todos() {
   }, []);
   return (
     <div>
-      {/* <Link to="/">Back Home</Link> */}
+      <Link to="/">Back Home</Link>
       {!!todos && (
         <div>
           <p>Title: {todos.title}</p>
-          <p>
-            Completed: <Completed status={todos.completed} />
-          </p>
-
-          <p></p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <p>Completed:</p> <Completed status={todos.completed} />
+          </div>
         </div>
       )}
     </div>
