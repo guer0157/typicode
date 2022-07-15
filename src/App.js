@@ -5,12 +5,13 @@ import Main from "./Components/Main";
 import Todos from "./Components/Todos";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/user/todos:userId" element={<Todos />} />
-      </Routes>
-    </BrowserRouter>
+    <Main />
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route exact path="/" element={<Main />} />
+    //     <Route exact path="/user/todos:userId" element={<Todos />} />
+    //   </Routes>
+    // </BrowserRouter>
   );
 }
 

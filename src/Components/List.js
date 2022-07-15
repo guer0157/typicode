@@ -20,7 +20,7 @@ export default function List({ users }) {
             <p>{user.phone}</p>
             <p>{user.website}</p>
             <p>{addressParser(user.address)}</p>
-            <Link to={`/user/todos${user.id}`}>Todos</Link>
+            {/* <Link to={`/user/todos${user.id}`}>Todos</Link> */}
           </div>
         ))}
     </div>

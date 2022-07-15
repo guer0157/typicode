@@ -42,7 +42,7 @@ export default function Todos() {
   }, []);
   return (
     <div>
-      <Link to="/">Back Home</Link>
+      {/* <Link to="/">Back Home</Link> */}
       {!!todos && (
         <div>
           <p>Title: {todos.title}</p>
