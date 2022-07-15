@@ -30,19 +30,20 @@ const Completed = (status) => {
 export default function Todos() {
   const [todos, setTodos] = useState();
   const { userId } = useParams();
+  const fetchData = async () => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${userId}`
+    );
+    const userTodo = await response.json();
+    setTodos(userTodo);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${userId}`
-      );
-      const userTodo = await response.json();
-      setTodos(userTodo);
-    };
     fetchData();
   }, []);
   return (
     <div>
-      {/* <Link to="/">Back Home</Link> */}
+      <Link to="/">Back Home</Link>
       {!!todos && (
         <div>
           <p>Title: {todos.title}</p>
